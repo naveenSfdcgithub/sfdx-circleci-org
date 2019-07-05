@@ -9,8 +9,7 @@ jobs:
 
       # Variables used in build steps
       - DX_CLI_URL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
-      - TESTLEVEL: RunSpecifiedTests
-      - TESTTORUN: MyTest
+      - TESTLEVEL: RunLocalTests
       - DEPLOYDIR: src
     steps:
       - checkout
@@ -44,7 +43,7 @@ jobs:
           name: Deploy to Target Deployment Org
           command: |
             #Deploy to target deployment org and run unit tests. 
-            sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL --runtests $TESTTORUN
+            sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
             
             #Example shows how to run a check only deploy.
             #sfdx force:mdapi:deploy --checkonly --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
