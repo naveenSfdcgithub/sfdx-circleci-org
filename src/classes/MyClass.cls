@@ -1,5 +1,6 @@
 public with sharing class MyClass {
 	public MyClass() {
+		system.System.debug('coming here');
 
 	}
 
